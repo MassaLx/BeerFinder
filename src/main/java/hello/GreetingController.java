@@ -64,13 +64,15 @@ public class GreetingController {
     		BreweryWithBeers breweryWithBeers = restTemplate.getForObject("http://api.brewerydb.com/v2/brewery/"+breweryId+"/beers?key="+apiKey, BreweryWithBeers.class);
         	System.out.println(breweryWithBeers.toString());
     		// for each beer, add its name to result
-        	for(int k=0; k<breweryWithBeers.getData().size();k++) {
-        		
-        		if((breweryWithBeers.getData().get(k).getStyle().getId() == styleId || styleId == -1) && breweryWithBeers.getData() != null ) {
-        			result.add(breweryWithBeers.getData().get(k));
-        		}
-        	}
-
+        	if (breweryWithBeers.getData() != null) {
+	        	for(int k=0; k<breweryWithBeers.getData().size();k++) {
+	        		
+	        		if( (breweryWithBeers.getData().get(k).getStyle().getId() == styleId || styleId == -1) ) {
+	        			result.add(breweryWithBeers.getData().get(k));
+	        		}
+	        	}
+	
+	    	}
     	}
     	
     	// pass the data of backend to front end template
