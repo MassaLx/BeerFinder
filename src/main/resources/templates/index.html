@@ -117,7 +117,7 @@
 
 		                var point = new google.maps.LatLng(crd.latitude, crd.longitude);
 		                new google.maps.Geocoder().geocode({'latLng': point}, function (res, status) {
-		                        var zip = res[0].formatted_address.match(/,\s\w{2}\s(\d{5})/);
+		                        var zip = res[0].formatted_address.match(/,\s\w{2}\s(\d{5})/)
 		                        // alert('Zip code is ' +  zip[1]);
 		                        document.getElementById("zipcode").value = zip[1];
 		                });
